@@ -24,7 +24,7 @@ AWMK-G is an all-in-one entertainment and gaming web platform that brings movies
 
 1. Clone the repository  
    ```bash
-   https://github.com/adityarathod/AWMK-G.git
+   git clone https://github.com/adityarathod2008/awmk-g.git
 
 2 Open the project folder
 

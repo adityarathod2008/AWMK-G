@@ -194,10 +194,18 @@
         <h2 style="color:rgb(208, 250, 236);text-align:center">Thanks For Using AWMK-G</h2>
     </div>
     <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 40px;
+  }
+
   .rating {
     direction: rtl;
     display: inline-flex;
-    font-size: 30px;
+    font-size: 35px;
   }
 
   .rating input {
@@ -205,9 +213,9 @@
   }
 
   .rating label {
-    color: #ccc;
+    color: #475569;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: 0.2s;
   }
 
   .rating input:checked ~ label,
@@ -215,34 +223,60 @@
   .rating label:hover ~ label {
     color: gold;
   }
+
+  .box {
+    margin-top: 20px;
+    background: #020617;
+    padding: 15px;
+    border-radius: 10px;
+    width: 260px;
+    margin-inline: auto;
+  }
 </style>
 </head>
 
 <body>
 
-<h3>Rate our website ⭐</h3>
+<h2>⭐ Rate AWMK-G</h2>
 
 <div class="rating">
-  <input type="radio" name="rate" id="star5" value="5">
-  <label for="star5">★</label>
+  <input type="radio" id="star5" name="rate" value="5"><label for="star5">★</label>
+  <input type="radio" id="star4" name="rate" value="4"><label for="star4">★</label>
+  <input type="radio" id="star3" name="rate" value="3"><label for="star3">★</label>
+  <input type="radio" id="star2" name="rate" value="2"><label for="star2">★</label>
+  <input type="radio" id="star1" name="rate" value="1"><label for="star1">★</label>
+</div>
 
-  <input type="radio" name="rate" id="star4" value="4">
-  <label for="star4">★</label>
-
-  <input type="radio" name="rate" id="star3" value="3">
-  <label for="star3">★</label>
-
-  <input type="radio" name="rate" id="star2" value="2">
-  <label for="star2">★</label>
-
-  <input type="radio" name="rate" id="star1" value="1">
-  <label for="star1">★</label>
+<div class="box">
+  <p>⭐ Average Rating: <span id="avg">0</span></p>
+  <p>👥 Total Ratings: <span id="count">0</span></p>
 </div>
 
 <script>
-  document.querySelectorAll('.rating input').forEach(star => {
-    star.addEventListener('change', () => {
-      alert(`You rated: ${star.value} stars ⭐`);
+  let totalRatings = localStorage.getItem("totalRatings") || 0;
+  let ratingSum = localStorage.getItem("ratingSum") || 0;
+
+  totalRatings = Number(totalRatings);
+  ratingSum = Number(ratingSum);
+
+  function updateUI() {
+    document.getElementById("count").innerText = totalRatings;
+    document.getElementById("avg").innerText =
+      totalRatings === 0 ? 0 : (ratingSum / totalRatings).toFixed(1);
+  }
+
+  updateUI();
+
+  document.querySelectorAll('input[name="rate"]').forEach(star => {
+    star.addEventListener("change", () => {
+      ratingSum += Number(star.value);
+      totalRatings++;
+
+      localStorage.setItem("ratingSum", ratingSum);
+      localStorage.setItem("totalRatings", totalRatings);
+
+      updateUI();
+      alert("Thanks for rating ⭐");
     });
   });
 </script>
@@ -284,5 +318,6 @@
 
 </body>
 </html>
+
 
 

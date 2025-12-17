@@ -193,6 +193,62 @@
     <div>
         <h2 style="color:rgb(208, 250, 236);text-align:center">Thanks For Using AWMK-G</h2>
     </div>
+    <style>
+  .rating {
+    direction: rtl;
+    display: inline-flex;
+    font-size: 30px;
+  }
+
+  .rating input {
+    display: none;
+  }
+
+  .rating label {
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .rating input:checked ~ label,
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: gold;
+  }
+</style>
+</head>
+
+<body>
+
+<h3>Rate our website ⭐</h3>
+
+<div class="rating">
+  <input type="radio" name="rate" id="star5" value="5">
+  <label for="star5">★</label>
+
+  <input type="radio" name="rate" id="star4" value="4">
+  <label for="star4">★</label>
+
+  <input type="radio" name="rate" id="star3" value="3">
+  <label for="star3">★</label>
+
+  <input type="radio" name="rate" id="star2" value="2">
+  <label for="star2">★</label>
+
+  <input type="radio" name="rate" id="star1" value="1">
+  <label for="star1">★</label>
+</div>
+
+<script>
+  document.querySelectorAll('.rating input').forEach(star => {
+    star.addEventListener('change', () => {
+      alert(`You rated: ${star.value} stars ⭐`);
+    });
+  });
+</script>
+
+</body>
+</html>
 </footer>
 
     <div style="display: flex;gap: 20px; background-color:rgb(14, 13, 13)">
@@ -228,4 +284,5 @@
 
 </body>
 </html>
+
 
